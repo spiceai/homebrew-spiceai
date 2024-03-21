@@ -2,7 +2,7 @@ $pkg     = "github.com/spiceai/spiceai"
 $tags    = %w()
 
 class Spice < Formula
-  desc "A unified SQL query interface and portable runtime to locally materialize, accelerate, and query data tables sourced from any database, data warehouse, or data lake."
+  desc "Spice.ai CLI"
   homepage "https://#{$pkg}"
   url "https://#{$pkg}"
   version "v0.9-alpha"
