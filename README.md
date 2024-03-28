@@ -13,3 +13,9 @@ brew install spiceai/spiceai/spice
 ```
 brew install spiceai/spiceai/spiced
 ```
+
+## Update version
+
+```
+./update-version <version>
+```
