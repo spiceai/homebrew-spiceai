@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -e
+
+if [ -z "$1" ]; then
+  echo "usage: $0 <version>"
+  exit 1
+fi
+
+version=$1
+
+for i in spice spiced; do
+  sed -i "s/  version .*/  version \"$version\"/g" ./Formula/$i.rb
+done
+
+for i in spice spiced; do
+  for j in darwin_aarch64 darwin_x86_64 linux_x86_64; do
+    wget https://github.com/spiceai/spiceai/releases/download/$version/${i}_${j}.tar.gz
+    sha=$(sha256sum ${i}_${j}.tar.gz | cut -d " " -f 1)
+
+    sed -i "s/${j}_sha256 = .*/${j}_sha256 = \"${sha}\"/g" ./Formula/$i.rb
+
+    rm ${i}_${j}.tar.gz
+  done
+done
