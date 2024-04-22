@@ -19,3 +19,9 @@ brew install spiceai/spiceai/spiced
 ```
 ./update-version <version>
 ```
+
+Or
+
+```
+version=<version> make docker-run
+```
