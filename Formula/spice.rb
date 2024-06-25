@@ -1,14 +1,14 @@
 $pkg     = "github.com/spiceai/spiceai"
 $tags    = %w()
-$darwin_aarch64_sha256 = "ed60bfc6c0a6de2d61b5f7ac787c850716e3449311beec1b6bc0ef1d043f64dd"
-$darwin_x86_64_sha256 = "a54ea2eeacbf1d988baa9125d7949d05f8012aa8dbc5c2ff66133d7c1eddb051"
-$linux_x86_64_sha256 = "bac3ccd49cfb4d405cc5d812cbaf0a9f93967d92117abebb6825db972d2db3e5"
+$darwin_aarch64_sha256 = "56639ad6f7257349eef3147542fd1faad026cd917a5f119a2b511df3d1e0d956"
+$darwin_x86_64_sha256 = "9239668f6613a3a1cea8004e9a315004220caee5366c4ee7b0765f2b5c41853f"
+$linux_x86_64_sha256 = "8bef3a09bfc8e499c9718c8b8deaa9b8c023eee181c0735c3efb7298f0937c3f"
 
 class Spice < Formula
   desc "Spice.ai CLI"
   homepage "https://#{$pkg}"
   url "https://#{$pkg}"
-  version "v0.14.0-alpha"
+  version "v0.14.1-alpha"
   revision 1
 
   if OS.mac?
