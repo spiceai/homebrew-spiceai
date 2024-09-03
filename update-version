@@ -9,8 +9,15 @@ fi
 
 version=$1
 
+# Determine if running on macOS or Linux
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  SED_CMD="sed -i ''"
+else
+  SED_CMD="sed -i"
+fi
+
 for i in spice spiced; do
-  sed -i "s/  version .*/  version \"$version\"/g" ./Formula/$i.rb
+  $SED_CMD "s/  version .*/  version \"$version\"/g" ./Formula/$i.rb
 done
 
 for i in spice spiced; do
@@ -18,8 +25,9 @@ for i in spice spiced; do
     wget https://github.com/spiceai/spiceai/releases/download/$version/${i}_${j}.tar.gz
     sha=$(sha256sum ${i}_${j}.tar.gz | cut -d " " -f 1)
 
-    sed -i "s/${j}_sha256 = .*/${j}_sha256 = \"${sha}\"/g" ./Formula/$i.rb
+    $SED_CMD "s/${j}_sha256 = .*/${j}_sha256 = \"${sha}\"/g" ./Formula/$i.rb
 
     rm ${i}_${j}.tar.gz
   done
 done
+
