@@ -17,13 +17,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Generate Acknowledgements
+      - name: Compute Formula
         shell: bash
-        run: ./update-version github.event.inputs.version
+        run: ./update-version ${github.event.inputs.version}
 
       - name: Create PR
-        if: github.event_name == 'workflow_dispatch'
         run: |
           git config --global user.name 'Spice Bot'
           git config --global user.email 'spice-bot@spice.ai'
