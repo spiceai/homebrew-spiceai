@@ -17,13 +17,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Generate Acknowledgements
+      - name: Compute Formula
         shell: bash
-        run: ./update-version github.event.inputs.version
+        run: ./update-version ${{ github.event.inputs.version}}
 
       - name: Create PR
-        if: github.event_name == 'workflow_dispatch'
         run: |
           git config --global user.name 'Spice Bot'
           git config --global user.email 'spice-bot@spice.ai'
@@ -31,9 +29,9 @@ jobs:
           
           if [[ $(git diff --exit-code Formula/**.rb) ]]; then
             git add Formula/**.rb
-            git commit -m "Update Formula for version ${github.event.inputs.version}"
-            git push origin acknowledgements/${GITHUB_RUN_ID}
-            gh pr create --title "Update Formula for version ${github.event.inputs.version}" --body "This PR updates the Formula for version ${github.event.inputs.version}" --base trunk --head update-formula/${GITHUB_RUN_ID}
+            git commit -m "Update Formula for version ${{ github.event.inputs.version}}"
+            git push origin update-formula/${GITHUB_RUN_ID}
+            gh pr create --title "Update Formula for version ${{ github.event.inputs.version}}" --body "This PR updates the Formula for version ${{ github.event.inputs.version}}" --base trunk --head update-formula/${GITHUB_RUN_ID}
           else
             echo "No changes detected"
           fi
