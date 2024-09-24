@@ -30,7 +30,7 @@ jobs:
           if [[ $(git diff --exit-code Formula/**.rb) ]]; then
             git add Formula/**.rb
             git commit -m "Update Formula for version ${{ github.event.inputs.version}}"
-            git push origin acknowledgements/${GITHUB_RUN_ID}
+            git push origin update-formula/${GITHUB_RUN_ID}
             gh pr create --title "Update Formula for version ${{ github.event.inputs.version}}" --body "This PR updates the Formula for version ${{ github.event.inputs.version}}" --base trunk --head update-formula/${GITHUB_RUN_ID}
           else
             echo "No changes detected"
