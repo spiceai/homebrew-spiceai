@@ -2,7 +2,7 @@ $pkg     = "github.com/spiceai/spiceai"
 $tags    = %w()
 $darwin_aarch64_sha256 = "349f91435becb7d8c10416f14a1802ca78c397230ceb94967ced6507c5ff2746"
 $darwin_x86_64_sha256 = "a599c8d06742ece204f508daa5ece6ba4fc8e83f5c31c111581e72e2af18ad67"
-$linux_x86_64_sha256 = "7462a6173110a919e112d0285f5f654c9111186bd79104db741d4df3fa499695"
+$linux_x86_64_sha256 = "e53bd18e1a6da96ed5dd420b28f8778edfce0ffcb4ae393931acce1e87c28824"
 
 class Spice < Formula
   desc "Spice.ai CLI"
