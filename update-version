@@ -21,7 +21,7 @@ for i in spice spiced; do
 done
 
 for i in spice spiced; do
-  for j in darwin_aarch64 darwin_x86_64 linux_x86_64; do
+  for j in darwin_aarch64 linux_x86_64; do
     wget https://github.com/spiceai/spiceai/releases/download/$version/${i}_${j}.tar.gz
     sha=$(sha256sum ${i}_${j}.tar.gz | cut -d " " -f 1)
 
