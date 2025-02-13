@@ -28,6 +28,15 @@ class Spice < Formula
   end
 
   def install
-      bin.install "spice" => "spice"
+    ohai "Installing spice binary..."
+    bin.install "spice" => "spice"
+  end
+
+  def post_install
+    ohai "Upgrading spice runtime..."
+    output = Utils.safe_popen_read("sh", "-c", "#{bin}/spice upgrade 2>&1")
+    output.lines.each do |line|
+      puts line
+    end
   end
 end
