@@ -11,7 +11,7 @@ class Spiced < Formula
   revision 1
 
   BASE_URL = "https://#{$pkg}/releases/download/#{version}"
-  ERROR_MSG = "Unfortunately, your OS architecture is not supported. For supported architectures, please visit spiceai.org/docs/installation#supported-os-architectures"
+  ERROR_MSG = "Your OS architecture does not have a pre-built binary. For supported architectures, visit https://spiceai.org/docs/installation#supported-os-architectures"
 
   on_macos do
     if Hardware::CPU.arm?
