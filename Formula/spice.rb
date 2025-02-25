@@ -10,8 +10,19 @@ class Spice < Formula
   version "v1.0.4"
   revision 1
 
+  os = `uname`.strip.downcase
+  arch = `uname -m`.strip
+
+  case arch
+  when /armv7.*/ then arch = "arm"
+  when "arm64" then arch = "aarch64"
+  when "amd64" then arch = "x86_64"
+  end
+
+  current_osarch = "#{os}-#{arch}"
+
   BASE_URL = "https://#{$pkg}/releases/download/#{version}"
-  ERROR_MSG = "Your OS architecture does not have a pre-built binary. For supported architectures, visit https://spiceai.org/docs/installation#supported-os-architectures"
+  ERROR_MSG = "#{current_osarch} does not have a pre-built binary. For supported architectures, visit https://spiceai.org/docs/reference/system_requirements#operating-systems-and-architectures"
 
   on_macos do
     if Hardware::CPU.arm?
