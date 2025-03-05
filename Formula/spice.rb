@@ -33,7 +33,7 @@ class Spice < Formula
   end
 
   def post_install
-    ohai "Upgrading spice runtime..."
+    ohai "Upgrading Spice Runtime..."
     output = Utils.safe_popen_read("sh", "-c", "#{bin}/spice upgrade 2>&1")
     output.lines.each do |line|
       puts line
