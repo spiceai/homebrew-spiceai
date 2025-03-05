@@ -28,7 +28,7 @@ class Spice < Formula
   end
 
   def install
-    ohai "Installing spice binary..."
+    ohai "Installing Spice CLI..."
     bin.install "spice" => "spice"
   end
 
