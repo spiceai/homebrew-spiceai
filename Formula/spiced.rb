@@ -1,13 +1,13 @@
 $pkg = "github.com/spiceai/spiceai"
-$darwin_aarch64_sha256 = "5c31f6c1ad7c476ec5718b73d7a0f5786e980df1893092360004c550c4322502"
-$linux_x86_64_sha256 = "91d8af95e456141886b9277bc12b6154ab6a66408803487a2f8ea5a60922f37a"
-$linux_aarch64_sha256 = "78a0ff86e796c42124ad5bc3cc3fca63efc3fa6a77fe74da9d62f09d91c7003e"
+$darwin_aarch64_sha256 = "8d0a44f942c46bd3622540f1850284eca57b2de34f127b53dfadfce7f5e40cf0"
+$linux_x86_64_sha256 = "e94748a2db20b3f892032f3ccf4d0ec676224d08a3ac2bc7b1e75fdb0f285129"
+$linux_aarch64_sha256 = "c4d8e76bdbd6d6c95cd50c5ef8d9a56e1c3871a9176b07b0eba9f37c2635ef4b"
 
 class Spiced < Formula
   desc "A unified SQL query interface and portable runtime to locally materialize, accelerate, and query data tables sourced from any database, data warehouse, or data lake."
   homepage "https://#{$pkg}"
   url "https://#{$pkg}"
-  version "v1.0.4"
+  version "v1.0.5"
   revision 1
 
   os = `uname`.strip.downcase
