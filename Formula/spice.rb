@@ -1,13 +1,13 @@
 $pkg = "github.com/spiceai/spiceai"
-$darwin_aarch64_sha256 = "7e6ffd6ff6ff5897aecfb308c2c0ae534ced2c278fa80cc069965c7978619a7d"
-$linux_x86_64_sha256 = "634553dccef88f722530786f7113d8b4433a01274a89fd191b82919afdde328e"
-$linux_aarch64_sha256 = "8b3f177340153ced57e9a9059e85d3caabe460e2b5350b50728ace6a86e0ba3f"
+$darwin_aarch64_sha256 = "2e8d226822c3cee1d6b9efd97566e1c04982b95b3ec6aa323bc482700d3ab1b1"
+$linux_x86_64_sha256 = "538fa6c197f37d468ea4df70bf4d9179d592de515dabb750ac698e1fb3c9bdfa"
+$linux_aarch64_sha256 = "87e768743fe4d4e1af0ef05fc7664d83efeccc164c0e6ff73cf224c532a61103"
 
 class Spice < Formula
   desc "Spice.ai CLI"
   homepage "https://#{$pkg}"
   url "https://#{$pkg}"
-  version "v1.8.1"
+  version "v1.8.2"
   revision 1
 
   os = `uname`.strip.downcase
