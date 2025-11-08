@@ -26,7 +26,7 @@ class Spiced < Formula
 
   on_macos do
     if Hardware::CPU.arm?
-      url "#{BASE_URL}/spice_darwin_aarch64.tar.gz"
+      url "#{BASE_URL}/spiced_darwin_aarch64.tar.gz"
       sha256 $darwin_aarch64_sha256
     else
       odie ERROR_MSG
@@ -35,10 +35,10 @@ class Spiced < Formula
 
   on_linux do
     if Hardware::CPU.arm?
-      url "#{BASE_URL}/spice_linux_aarch64.tar.gz"
+      url "#{BASE_URL}/spiced_linux_aarch64.tar.gz"
       sha256 $linux_aarch64_sha256
     elsif Hardware::CPU.intel?
-      url "#{BASE_URL}/spice_linux_x86_64.tar.gz"
+      url "#{BASE_URL}/spiced_linux_x86_64.tar.gz"
       sha256 $linux_x86_64_sha256
     else
       odie ERROR_MSG
