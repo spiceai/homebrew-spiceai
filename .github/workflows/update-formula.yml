@@ -6,7 +6,7 @@ on:
       version:
         description: 'release version of spiceai/spiceai'
         required: true
-        default: 'v1.8.0'
+        default: 'v1.8.3'
 
 jobs:
   generate:
