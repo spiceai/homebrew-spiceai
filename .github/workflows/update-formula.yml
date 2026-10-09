@@ -15,24 +15,36 @@ jobs:
     permissions:
       pull-requests: write
       contents: write
+    env:
+      VERSION: ${{ github.event.inputs.version }}
 
     steps:
+      # `brew upgrade` installs whatever version the formula names, so a
+      # pre-release here reaches every Homebrew user. Only stable releases.
+      - name: Refuse pre-release versions
+        shell: bash
+        run: |
+          if [[ "$VERSION" == *-* ]]; then
+            echo "::error::$VERSION is a pre-release; the spice formula only tracks stable releases."
+            exit 1
+          fi
+
       - uses: actions/checkout@v4
       - name: Compute Formula
         shell: bash
-        run: ./update-version ${{ github.event.inputs.version}}
+        run: ./update-version "$VERSION"
 
       - name: Create PR
         run: |
           git config --global user.name 'Spice Bot'
           git config --global user.email 'spice-bot@spice.ai'
           git checkout -b update-formula/${GITHUB_RUN_ID}
-          
+
           if [[ $(git diff --exit-code Formula/**.rb) ]]; then
             git add Formula/**.rb
-            git commit -m "Update Formula for version ${{ github.event.inputs.version}}"
+            git commit -m "Update Formula for version $VERSION"
             git push origin update-formula/${GITHUB_RUN_ID}
-            gh pr create --title "Update Formula for version ${{ github.event.inputs.version}}" --body "This PR updates the Formula for version ${{ github.event.inputs.version}}" --base trunk --head update-formula/${GITHUB_RUN_ID}
+            gh pr create --title "Update Formula for version $VERSION" --body "This PR updates the Formula for version $VERSION" --base trunk --head update-formula/${GITHUB_RUN_ID}
           else
             echo "No changes detected"
           fi
